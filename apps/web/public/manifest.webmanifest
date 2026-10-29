@@ -1,0 +1,10 @@
+{
+  "name": "yay-style",
+  "short_name": "yay-style",
+  "description": "Примерь вещь с маркетплейса на своё фото",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#111111",
+  "lang": "ru"
+}

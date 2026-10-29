@@ -1,0 +1,13 @@
+node_modules
+dist
+.next
+out
+.venv
+__pycache__
+*.pyc
+.pytest_cache
+.ruff_cache
+.env
+.DS_Store
+services/data
+apps/web/public/dev

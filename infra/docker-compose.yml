@@ -1,0 +1,17 @@
+# Local infrastructure. Stage 0 runs without it (file cache only);
+# PostgreSQL and Redis are used once accounts, wardrobe and the job queue land.
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: yay
+      POSTGRES_PASSWORD: yay
+      POSTGRES_DB: yay
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+  redis:
+    image: redis:7
+    ports: ["6379:6379"]
+
+volumes:
+  pgdata:

@@ -1,0 +1,44 @@
+[project]
+name = "yay-backend"
+version = "0.1.0"
+description = "yay-style backend: API and garment-preparation worker"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "python-multipart>=0.0.12",
+    "httpx>=0.27",
+    "pydantic>=2.9",
+    "pydantic-settings>=2.6",
+    "numpy>=2.0",
+    "pillow>=11.0",
+    "opencv-python-headless>=4.10",
+    "mediapipe>=0.10.20",
+    "rembg>=2.0.60",
+    "onnxruntime>=1.20",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3", "pytest-asyncio>=0.24", "respx>=0.21", "ruff>=0.7"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["api/yay_api", "worker/yay_worker"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+markers = ["network: hits real marketplace endpoints"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint.isort]
+known-first-party = ["yay_api", "yay_worker"]
+
+[tool.ruff.lint.flake8-bugbear]
+extend-immutable-calls = ["fastapi.File", "fastapi.Form"]
